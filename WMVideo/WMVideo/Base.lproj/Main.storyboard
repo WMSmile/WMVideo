@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WMVideo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vab-jm-K3q">
+                                <rect key="frame" x="138" y="144" width="138" height="92"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="29u-hQ-iht"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="138" id="maz-rx-UQ0"/>
+                                </constraints>
+                                <state key="normal" title="record video"/>
+                                <connections>
+                                    <action selector="recordVideoClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aqF-y3-iM6"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uLg-7T-Nyc">
+                                <rect key="frame" x="197" y="92" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="ZdO-ou-0Hi"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uLg-7T-Nyc" firstAttribute="centerX" secondItem="vab-jm-K3q" secondAttribute="centerX" id="MQs-Ux-7y5"/>
+                            <constraint firstItem="vab-jm-K3q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zcd-S0-6kc"/>
+                            <constraint firstItem="uLg-7T-Nyc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="dNr-M5-90k"/>
+                            <constraint firstItem="vab-jm-K3q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="v1D-FZ-uAd" userLabel="record video.top = Safe Area.top + 100"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="uLg-7T-Nyc" id="YaL-iB-vcU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
