@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class ViewController: UIViewController {
 
@@ -29,10 +30,8 @@ class ViewController: UIViewController {
             print("url == \(url)")
             //normal
 //            if type == .video {
-//                let player = WMVideoPlayer(frame: self.view.bounds)
-//                player.videoUrl = URL.init(fileURLWithPath: url)
-//                self.view.addSubview(player)
-//                player.play()
+//                let videoUrl = URL.init(fileURLWithPath: url)
+//                self.WM_FUNC_PresentPlay(videoUrl: videoUrl)
 //            }
             //export
             if type == .video {
@@ -42,10 +41,10 @@ class ViewController: UIViewController {
                 self.loadingIndicator.startAnimating()
                 videoEditer.assetReaderExport(completeHandler: { url in
                     self.loadingIndicator.stopAnimating()
-                    let player = WMVideoPlayer(frame: self.view.bounds)
-                    player.videoUrl = URL.init(fileURLWithPath: url)
-                    self.view.addSubview(player)
-                    player.play()
+                    // play video
+                    let videoUrl = URL.init(fileURLWithPath: url)
+                    self.WM_FUNC_PresentPlay(videoUrl: videoUrl)
+                   
                 })
             }
             //image
@@ -79,7 +78,21 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    //MARK:- play video
+    func WM_FUNC_PresentPlay(videoUrl: URL) -> Void {
+        
+        // Create an AVPlayer, passing it the HTTP Live Streaming URL.
+        let player = AVPlayer(url: videoUrl)
+        // Create a new AVPlayerViewController and pass it a reference to the player.
+        let controller = AVPlayerViewController()
+        controller.player = player
+        // Modally present the player and call the player's play() method when complete.
+        present(controller, animated: true) {
+            player.play()
+        }
+        
+    }
+
     
     
     

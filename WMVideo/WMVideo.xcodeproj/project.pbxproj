@@ -27,6 +27,7 @@
 		7A027420238BBD7400B457B2 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A02741F238BBD7400B457B2 /* Bundle+Extension.swift */; };
 		7A027422238BBF0200B457B2 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A027421238BBF0200B457B2 /* UIImage+Extension.swift */; };
 		7A13C5AD238D16A7004F0392 /* WMCameraFileTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A13C5AC238D16A7004F0392 /* WMCameraFileTools.swift */; };
+		7A35A5E1238E48D500BE4A6B /* WMVideoTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A35A5E0238E48D500BE4A6B /* WMVideoTools.swift */; };
 		7AA39918238CF9250005FBB2 /* Timer+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA39917238CF9250005FBB2 /* Timer+Custom.swift */; };
 		7AF52B5A238E09C200C4CBDB /* 孤芳自赏.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AF52B59238E09C200C4CBDB /* 孤芳自赏.mp3 */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		7A02741F238BBD7400B457B2 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		7A027421238BBF0200B457B2 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		7A13C5AC238D16A7004F0392 /* WMCameraFileTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMCameraFileTools.swift; sourceTree = "<group>"; };
+		7A35A5E0238E48D500BE4A6B /* WMVideoTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMVideoTools.swift; sourceTree = "<group>"; };
 		7AA39917238CF9250005FBB2 /* Timer+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timer+Custom.swift"; sourceTree = "<group>"; };
 		7AF52B59238E09C200C4CBDB /* 孤芳自赏.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "孤芳自赏.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +184,7 @@
 				7A02741F238BBD7400B457B2 /* Bundle+Extension.swift */,
 				7A027421238BBF0200B457B2 /* UIImage+Extension.swift */,
 				7A13C5AC238D16A7004F0392 /* WMCameraFileTools.swift */,
+				7A35A5E0238E48D500BE4A6B /* WMVideoTools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				7A13C5AD238D16A7004F0392 /* WMCameraFileTools.swift in Sources */,
 				7A027415238BA58900B457B2 /* WMVideoEditor.swift in Sources */,
 				7A0273DA238BA3FB00B457B2 /* AppDelegate.swift in Sources */,
+				7A35A5E1238E48D500BE4A6B /* WMVideoTools.swift in Sources */,
 				7AA39918238CF9250005FBB2 /* Timer+Custom.swift in Sources */,
 				7A027420238BBD7400B457B2 /* Bundle+Extension.swift in Sources */,
 				7A027413238BA56500B457B2 /* WMDeviceOrientation.swift in Sources */,
