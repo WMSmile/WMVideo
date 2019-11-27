@@ -17,7 +17,7 @@ class WMVideoTools: NSObject {
     ///   - inputURL: input url
     ///   - completionHandler: (URL)->())
     ///
-    class func compressVideoWithQuality(presetName: String, inputURL:URL,outputFileType:AVFileType = AVFileType.mp4, completionHandler:@escaping (_ outputUrl: URL?) -> ()) {
+    class func wm_compressVideoWithQuality(presetName: String, inputURL:URL,outputFileType:AVFileType = AVFileType.mp4, completionHandler:@escaping (_ outputUrl: URL?) -> ()) {
         let videoFilePath = NSTemporaryDirectory().appendingFormat("/compressVideo.mp4")
         if FileManager.default.fileExists(atPath: videoFilePath) {
             do {

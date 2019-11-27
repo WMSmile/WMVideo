@@ -23,12 +23,12 @@
 		7A027415238BA58900B457B2 /* WMVideoEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A027414238BA58900B457B2 /* WMVideoEditor.swift */; };
 		7A027417238BA5B000B457B2 /* WMVideoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A027416238BA5B000B457B2 /* WMVideoExporter.swift */; };
 		7A02741B238BACC100B457B2 /* WMCameraResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A02741A238BACC100B457B2 /* WMCameraResource.bundle */; };
-		7A02741E238BB7D300B457B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A02741D238BB7D300B457B2 /* UIView+Extension.swift */; };
-		7A027420238BBD7400B457B2 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A02741F238BBD7400B457B2 /* Bundle+Extension.swift */; };
-		7A027422238BBF0200B457B2 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A027421238BBF0200B457B2 /* UIImage+Extension.swift */; };
+		7A02741E238BB7D300B457B2 /* UIView+Extension(WM).swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A02741D238BB7D300B457B2 /* UIView+Extension(WM).swift */; };
+		7A027420238BBD7400B457B2 /* Bundle+Extension(wm).swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A02741F238BBD7400B457B2 /* Bundle+Extension(wm).swift */; };
+		7A027422238BBF0200B457B2 /* UIImage+Extension(wm).swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A027421238BBF0200B457B2 /* UIImage+Extension(wm).swift */; };
 		7A13C5AD238D16A7004F0392 /* WMCameraFileTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A13C5AC238D16A7004F0392 /* WMCameraFileTools.swift */; };
 		7A35A5E1238E48D500BE4A6B /* WMVideoTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A35A5E0238E48D500BE4A6B /* WMVideoTools.swift */; };
-		7AA39918238CF9250005FBB2 /* Timer+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA39917238CF9250005FBB2 /* Timer+Custom.swift */; };
+		7AA39918238CF9250005FBB2 /* Timer+Extension(wm).swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA39917238CF9250005FBB2 /* Timer+Extension(wm).swift */; };
 		7AF52B5A238E09C200C4CBDB /* 孤芳自赏.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AF52B59238E09C200C4CBDB /* 孤芳自赏.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -72,12 +72,12 @@
 		7A027414238BA58900B457B2 /* WMVideoEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMVideoEditor.swift; sourceTree = "<group>"; };
 		7A027416238BA5B000B457B2 /* WMVideoExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMVideoExporter.swift; sourceTree = "<group>"; };
 		7A02741A238BACC100B457B2 /* WMCameraResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WMCameraResource.bundle; sourceTree = "<group>"; };
-		7A02741D238BB7D300B457B2 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		7A02741F238BBD7400B457B2 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
-		7A027421238BBF0200B457B2 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		7A02741D238BB7D300B457B2 /* UIView+Extension(WM).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension(WM).swift"; sourceTree = "<group>"; };
+		7A02741F238BBD7400B457B2 /* Bundle+Extension(wm).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension(wm).swift"; sourceTree = "<group>"; };
+		7A027421238BBF0200B457B2 /* UIImage+Extension(wm).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension(wm).swift"; sourceTree = "<group>"; };
 		7A13C5AC238D16A7004F0392 /* WMCameraFileTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMCameraFileTools.swift; sourceTree = "<group>"; };
 		7A35A5E0238E48D500BE4A6B /* WMVideoTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMVideoTools.swift; sourceTree = "<group>"; };
-		7AA39917238CF9250005FBB2 /* Timer+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timer+Custom.swift"; sourceTree = "<group>"; };
+		7AA39917238CF9250005FBB2 /* Timer+Extension(wm).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timer+Extension(wm).swift"; sourceTree = "<group>"; };
 		7AF52B59238E09C200C4CBDB /* 孤芳自赏.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "孤芳自赏.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,10 +179,10 @@
 		7A02741C238BB7B500B457B2 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				7AA39917238CF9250005FBB2 /* Timer+Custom.swift */,
-				7A02741D238BB7D300B457B2 /* UIView+Extension.swift */,
-				7A02741F238BBD7400B457B2 /* Bundle+Extension.swift */,
-				7A027421238BBF0200B457B2 /* UIImage+Extension.swift */,
+				7AA39917238CF9250005FBB2 /* Timer+Extension(wm).swift */,
+				7A02741D238BB7D300B457B2 /* UIView+Extension(WM).swift */,
+				7A02741F238BBD7400B457B2 /* Bundle+Extension(wm).swift */,
+				7A027421238BBF0200B457B2 /* UIImage+Extension(wm).swift */,
 				7A13C5AC238D16A7004F0392 /* WMCameraFileTools.swift */,
 				7A35A5E0238E48D500BE4A6B /* WMVideoTools.swift */,
 			);
@@ -338,8 +338,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A027422238BBF0200B457B2 /* UIImage+Extension.swift in Sources */,
-				7A02741E238BB7D300B457B2 /* UIView+Extension.swift in Sources */,
+				7A027422238BBF0200B457B2 /* UIImage+Extension(wm).swift in Sources */,
+				7A02741E238BB7D300B457B2 /* UIView+Extension(WM).swift in Sources */,
 				7A02740F238BA53100B457B2 /* WMVideoPlayer.swift in Sources */,
 				7A02740D238BA50F00B457B2 /* WMCameraControl.swift in Sources */,
 				7A027417238BA5B000B457B2 /* WMVideoExporter.swift in Sources */,
@@ -348,8 +348,8 @@
 				7A027415238BA58900B457B2 /* WMVideoEditor.swift in Sources */,
 				7A0273DA238BA3FB00B457B2 /* AppDelegate.swift in Sources */,
 				7A35A5E1238E48D500BE4A6B /* WMVideoTools.swift in Sources */,
-				7AA39918238CF9250005FBB2 /* Timer+Custom.swift in Sources */,
-				7A027420238BBD7400B457B2 /* Bundle+Extension.swift in Sources */,
+				7AA39918238CF9250005FBB2 /* Timer+Extension(wm).swift in Sources */,
+				7A027420238BBD7400B457B2 /* Bundle+Extension(wm).swift in Sources */,
 				7A027413238BA56500B457B2 /* WMDeviceOrientation.swift in Sources */,
 				7A02740B238BA4BB00B457B2 /* WMCameraManger.swift in Sources */,
 				7A027411238BA54E00B457B2 /* WMImageRotate.swift in Sources */,

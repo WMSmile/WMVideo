@@ -72,7 +72,7 @@ extension UIView {
         }
     }
     
-    public var rightX: CGFloat{
+    public var wm_rightX: CGFloat{
         get{
             return self.wm_x + self.wm_width
         }
@@ -83,7 +83,7 @@ extension UIView {
         }
     }
     
-    public var bottomY: CGFloat{
+    public var wm_bottomY: CGFloat{
         get{
             return self.wm_y + self.wm_height
         }
@@ -94,7 +94,7 @@ extension UIView {
         }
     }
     
-    public var centerX : CGFloat{
+    public var wm_centerX : CGFloat{
         get{
             return self.center.x
         }
@@ -103,7 +103,7 @@ extension UIView {
         }
     }
     
-    public var centerY : CGFloat{
+    public var wm_centerY : CGFloat{
         get{
             return self.center.y
         }
@@ -112,7 +112,7 @@ extension UIView {
         }
     }
     
-    public var origin: CGPoint{
+    public var wm_origin: CGPoint{
         get{
             return self.frame.origin
         }
@@ -122,7 +122,7 @@ extension UIView {
         }
     }
     
-    public var size: CGSize{
+    public var wm_size: CGSize{
         get{
             return self.frame.size
         }
