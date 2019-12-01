@@ -29,6 +29,7 @@ class WMVideoTools: NSObject {
         let savePathUrl =  URL(fileURLWithPath: videoFilePath)
         let sourceAsset = AVURLAsset(url: inputURL, options: nil)
         let assetExport: AVAssetExportSession = AVAssetExportSession(asset: sourceAsset, presetName: presetName)!
+//        assetExport.fileLengthLimit = 3 * 1024 * 1024
         assetExport.outputFileType = outputFileType
         assetExport.outputURL = savePathUrl
         assetExport.shouldOptimizeForNetworkUse = true
@@ -56,5 +57,17 @@ class WMVideoTools: NSObject {
         
     }
     
+    /// get file size
+    ///
+    /// - Parameter url: url
+    /// - Returns: Double file size
+    class func wm_getFileSize(_ url:String) -> Double {
+        if let fileData:Data = try? Data.init(contentsOf: URL.init(fileURLWithPath: url)) {
+            let size = Double(fileData.count) / (1024.00 * 1024.00)
+            return size
+        }
+        return 0.00
+    }
+
     
 }
