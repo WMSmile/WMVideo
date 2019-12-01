@@ -15,9 +15,10 @@ class WMVideoTools: NSObject {
     /// - Parameters:
     ///   - presetName: AVAssetExportPresetLowQuality
     ///   - inputURL: input url
+    ///   - maxFileSize: byte  eg: mb = assetExport.fileLengthLimit = 3 * 1024 * 1024
     ///   - completionHandler: (URL)->())
     ///
-    class func wm_compressVideoWithQuality(presetName: String, inputURL:URL,outputFileType:AVFileType = AVFileType.mp4, completionHandler:@escaping (_ outputUrl: URL?) -> ()) {
+    class func wm_compressVideoWithQuality(presetName: String, inputURL:URL,outputFileType:AVFileType = AVFileType.mp4,maxFileSize:Int64 = 0, completionHandler:@escaping (_ outputUrl: URL?) -> ()) {
         let videoFilePath = NSTemporaryDirectory().appendingFormat("/compressVideo.mp4")
         if FileManager.default.fileExists(atPath: videoFilePath) {
             do {
@@ -29,7 +30,9 @@ class WMVideoTools: NSObject {
         let savePathUrl =  URL(fileURLWithPath: videoFilePath)
         let sourceAsset = AVURLAsset(url: inputURL, options: nil)
         let assetExport: AVAssetExportSession = AVAssetExportSession(asset: sourceAsset, presetName: presetName)!
-//        assetExport.fileLengthLimit = 3 * 1024 * 1024
+        if maxFileSize > 0{
+            assetExport.fileLengthLimit = maxFileSize
+        }
         assetExport.outputFileType = outputFileType
         assetExport.outputURL = savePathUrl
         assetExport.shouldOptimizeForNetworkUse = true
