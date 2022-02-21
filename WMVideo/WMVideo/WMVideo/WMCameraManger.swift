@@ -67,7 +67,7 @@ class WMCameraManger: NSObject {
         }
     }
     
-    func staruRunning() {
+    func startRunning() {
         DispatchQueue.global(qos: .default).async {
             self.session.startRunning()
         }

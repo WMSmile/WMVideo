@@ -55,7 +55,7 @@ class WMCameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        manager.staruRunning()
+        manager.startRunning()
         manager.focusAt(cameraContentView.center)
     }
     
