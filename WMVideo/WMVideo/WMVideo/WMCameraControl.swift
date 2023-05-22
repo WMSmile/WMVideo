@@ -15,7 +15,7 @@ enum WMLongPressState {
     case end
 }
 
-protocol WMCameraControlDelegate: class {
+protocol WMCameraControlDelegate {
     func cameraControlDidTakePhoto()
     func cameraControlBeginTakeVideo()
     func cameraControlEndTakeVideo()
@@ -28,7 +28,7 @@ protocol WMCameraControlDelegate: class {
 
 class WMCameraControl: UIView {
     
-    weak open var delegate: WMCameraControlDelegate?
+    open var delegate: WMCameraControlDelegate?
     // record video length
     var videoLength: Double = 10
     

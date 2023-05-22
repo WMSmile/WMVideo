@@ -1,5 +1,7 @@
 # WMVideo
 仿微信录像和拍照，record Video and photo functions exporter
+版本支持iOS11.0+
+版本支持iOS9.0+ 版本1.0.0
 
 [源码地址](https://github.com/WMSmile/WMVideo)
 # 使用

@@ -10,7 +10,7 @@ import UIKit
 import AssetsLibrary
 import AVFoundation
 
-class WMCameraManger: NSObject {
+class WMCameraManger: NSObject{
     
     let session = AVCaptureSession()
     
@@ -33,7 +33,8 @@ class WMCameraManger: NSObject {
     /**音频输出*/
     var audioDataOut: AVCaptureAudioDataOutput!
     /**照片输出*/
-    var stillImageOutput: AVCaptureStillImageOutput!
+    //    var stillImageOutput: AVCaptureStillImageOutput!
+    var stillImageOutput: AVCapturePhotoOutput!
     
     let focusImageView = UIImageView()
     
@@ -51,6 +52,8 @@ class WMCameraManger: NSObject {
     var currentOrientation: UIInterfaceOrientation = .portrait
     
     var error: (String) -> () = {_ in }
+    
+    var didFinishTakePhoto: ((_ imageUrl:String) -> Void)? = nil;
     
     
     init(superView: UIView) {
@@ -85,16 +88,18 @@ class WMCameraManger: NSObject {
         showView.layer.addSublayer(previewLayer)
         
         //输入设备
-        let devicesVideo = AVCaptureDevice.devices(for: .video)
-        let devicesAudio = AVCaptureDevice.devices(for: .audio)
+        //        let devicesVideo = AVCaptureDevice.devices(for: .video)
+        //        let devicesAudio = AVCaptureDevice.devices(for: .audio)
+        let devicesVideo = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back)
+        let devicesAudio = AVCaptureDevice.default(.builtInMicrophone, for: AVMediaType.audio, position: .unspecified)
         
-        guard let firstVideoDevice = devicesVideo.first,
-            let firstAudioDevice = devicesAudio.first,
-            let video = try? AVCaptureDeviceInput.init(device: firstVideoDevice),
-            let audio = try? AVCaptureDeviceInput.init(device: firstAudioDevice)
-            else {
-                error("初始化相机失败")
-                return
+        guard let firstVideoDevice = devicesVideo,
+              let firstAudioDevice = devicesAudio,
+              let video = try? AVCaptureDeviceInput.init(device: firstVideoDevice),
+              let audio = try? AVCaptureDeviceInput.init(device: firstAudioDevice)
+        else {
+            error("初始化相机失败")
+            return
         }
         
         videoInput = video
@@ -124,8 +129,9 @@ class WMCameraManger: NSObject {
         }
         
         //图片输出
-        stillImageOutput = AVCaptureStillImageOutput()
-        stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+        //        stillImageOutput = AVCaptureStillImageOutput()
+        stillImageOutput = AVCapturePhotoOutput()
+        //        stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
         if session.canAddOutput(stillImageOutput) {
             session.addOutput(stillImageOutput)
         }
@@ -158,14 +164,14 @@ class WMCameraManger: NSObject {
             AVVideoExpectedSourceFrameRateKey: 30,
             AVVideoMaxKeyFrameIntervalKey: 30,
             AVVideoAverageBitRateKey: 3 * videoWidth * videoHeight
-            ] as [String : Any]
+        ] as [String : Any]
         let outputSettings = [
-            AVVideoCodecKey: AVVideoCodecH264,
+            AVVideoCodecKey: AVVideoCodecType.h264,
             AVVideoWidthKey: videoHeight,
             AVVideoHeightKey: videoWidth,
             AVVideoScalingModeKey: AVVideoScalingModeResizeAspectFill,
             AVVideoCompressionPropertiesKey: compressionProperties
-            ] as [String : Any]
+        ] as [String : Any]
         
         assetWriterVideoInput = AVAssetWriterInput.init(mediaType: .video, outputSettings: outputSettings)
         assetWriterVideoInput.transform = CGAffineTransform.init(rotationAngle: CGFloat(rotate))
@@ -188,29 +194,42 @@ class WMCameraManger: NSObject {
         }
     }
     
-
+    
     // 拍照调用方法
     func pickImage(complete: @escaping (String) -> ()) {
         currentUrl = WMCameraFileTools.wm_createFileUrl("jpg")
-        let imageOrientation = currentOrientation
-        let videoConnection = stillImageOutput.connection(with: .video)
         
-        stillImageOutput.captureStillImageAsynchronously(from: videoConnection!, completionHandler: { [weak self] (buffer, error) in
-            
-            guard let self = self,
-                let buffer = buffer,
-                let imageData = AVCaptureStillImageOutput
-                    .jpegStillImageNSDataRepresentation(buffer),
-                let originImage = UIImage.init(data: imageData)
-                else {
-                    return
-            }
-            let rotete = self.imageRotateWith(imageOrientation)
-            let newImage = WMImageRotate.rotateImage(originImage, withAngle: rotete)
-            
-            try? newImage.jpegData(compressionQuality: 1)?.write(to: URL.init(fileURLWithPath: self.currentUrl))
-            complete(self.currentUrl)
-        })
+        var format = [AVVideoCodecKey: AVVideoCodecType.jpeg];
+        let availablePhotoCodecTypes =  stillImageOutput.availablePhotoCodecTypes;
+        if(availablePhotoCodecTypes.contains(AVVideoCodecType.hevc)){
+            format = [AVVideoCodecKey: AVVideoCodecType.hevc];
+        }
+        let outputSettings = AVCapturePhotoSettings.init(format: format);
+        outputSettings.isAutoStillImageStabilizationEnabled = true;
+        outputSettings.flashMode = .off;//关闭闪光灯
+        
+        stillImageOutput.capturePhoto(with:outputSettings, delegate: self);
+        
+        self.didFinishTakePhoto = complete;
+        
+        //        let imageOrientation = currentOrientation
+        //        let videoConnection = stillImageOutput.connection(with: .video)
+        //        stillImageOutput.captureStillImageAsynchronously(from: videoConnection!, completionHandler: { [weak self] (buffer, error) in
+        //
+        //            guard let self = self,
+        //                let buffer = buffer,
+        //                let imageData = AVCaptureStillImageOutput
+        //                    .jpegStillImageNSDataRepresentation(buffer),
+        //                let originImage = UIImage.init(data: imageData)
+        //                else {
+        //                    return
+        //            }
+        //            let rotete = self.imageRotateWith(imageOrientation)
+        //            let newImage = WMImageRotate.rotateImage(originImage, withAngle: rotete)
+        //
+        //            try? newImage.jpegData(compressionQuality: 1)?.write(to: URL.init(fileURLWithPath: self.currentUrl))
+        //            complete(self.currentUrl)
+        //        })
     }
     
     func startRecordingVideo() {
@@ -308,9 +327,9 @@ class WMCameraManger: NSObject {
         }
         
         guard let toChangeDevice = getCameraDevice(toChangePosition),
-            let toChangeDeviceInput = try? AVCaptureDeviceInput.init(device: toChangeDevice) else {
-                error("切换摄像头失败")
-                return
+              let toChangeDeviceInput = try? AVCaptureDeviceInput.init(device: toChangeDevice) else {
+            error("切换摄像头失败")
+            return
         }
         session.beginConfiguration()
         session.removeInput(videoInput)
@@ -322,8 +341,9 @@ class WMCameraManger: NSObject {
     }
     
     func getCameraDevice(_ position: AVCaptureDevice.Position) -> AVCaptureDevice? {
-        let cameras = AVCaptureDevice.devices(for: .video)
-        return cameras.first(where: { $0.position == position })
+        //        let cameras = AVCaptureDevice.devices(for: .video)
+        //        return cameras.first(where: { $0.position == position })
+        return AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: position)
     }
     
     func lockForConfiguration(_ closure: (AVCaptureDevice) -> ()) {
@@ -413,5 +433,50 @@ extension WMCameraManger: CAAnimationDelegate {
             self.focusImageView.isHidden = true
         }
     }
+    
+}
+extension WMCameraManger: AVCapturePhotoCaptureDelegate {
+    
+    //#pragma mark AVCapturePhotoCaptureDelegate
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if ((error) != nil) {
+            print("获取图片错误 --- \(error?.localizedDescription ?? "")");
+        }
+        
+        let cgImage = photo.cgImageRepresentation()
+        if(cgImage != nil){
+            print("获取图片成功！")
+            var image = UIImage.init(cgImage: cgImage!)
+            
+            //前置摄像头拍照会旋转180解决办法
+            if(self.videoInput.device.position == .front){
+                let imgOrientation = UIImage.Orientation.leftMirrored
+                image = UIImage.init(cgImage: cgImage!, scale: 1.0, orientation: imgOrientation)
+            }else{
+                let imgOrientation = UIImage.Orientation.right
+                image = UIImage.init(cgImage: cgImage!, scale: 1.0, orientation: imgOrientation)
+            }
+            
+            //重新画一张图片(将时间/个人信息/地址信息画上去)
+            //            self.image = [self drawMarkImage:image];
+            //是否旋转图片
+            //            let newImage = WMImageRotate.rotateImage(image, withAngle: rotete)
+            
+            try? image.jpegData(compressionQuality: 1)?.write(to: URL.init(fileURLWithPath: self.currentUrl))
+            
+            if(self.didFinishTakePhoto != nil){
+                self.didFinishTakePhoto!(self.currentUrl);
+            }
+            //            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        }else{
+            print("获取图片错误 --- ");
+        }
+        
+        
+        
+    }
+    
+    
+    
     
 }

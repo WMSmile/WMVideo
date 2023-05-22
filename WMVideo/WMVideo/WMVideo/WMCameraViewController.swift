@@ -120,7 +120,7 @@ extension WMCameraViewController: WMCameraControlDelegate {
             }
         }
     }
-    
+
     func cameraControlBeginTakeVideo() {
         manager.repareForZoom()
         manager.startRecordingVideo()
